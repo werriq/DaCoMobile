@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sketch Pad</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" type="text/css" href="css/draw.css" />
+	
+  </head>
+  
+  
+  <body>
+	<div id="page">		
+		  
+		  <nav>
+            <ul>
+			  <li class = "cat1">
+				<a href="#">Main</a>
+				<ul>
+				  <li><a onclick="newCanvas()">New</a></li>
+				  <li><a href="index.html">Zurück</a></li>
+				</ul>
+			  </li>
+			  <li class = "cat1">
+				<a href="#">Tools</a>
+				<ul>
+				  <li><a id="pen" onclick="selectTool(this)">Pen</a></li>
+				  <li><a id="rect" onclick="selectTool(this)">Rectangle</a></li>
+				  <li><a id="mark" onclick="selectTool(this)">markError</a></li>
+				</ul>
+			  </li>
+			  <!--
+			  <li class = "cat1">
+				<a href="#">Farbe</a>
+				<ul>
+				  <li><a class="palette white" onclick="selectColor(this)"></a></li>
+				  <li><a class="palette black" onclick="selectColor(this)"></a></li>
+				  <li><a class="palette red" onclick="selectColor(this)"></a></li>
+				  <li><a class="palette yellow" onclick="selectColor(this)"></a></li>
+				  <li><a class="palette green" onclick="selectColor(this)"></a></li>
+				  <li><a class="palette blue" onclick="selectColor(this)"></a></li>
+				</ul>
+			  </li>
+			  -->
+			  <li class = "cat1">
+				<a href="#">Cordova</a>
+				<ul>
+				  <li><a id="testBTN" onclick="makeList()">makelist</a></li>
+				  <li><a id="testBTN" onclick="addError(C03)">addError</a></li>
+				  <li><a id="T08" onclick="selectError(this)">T08</a></li>
+				  <li><a id="F16" onclick="selectError(this)">F16</a></li>
+				</ul>
+			  </li>
+            </ul>
+		  </nav>
+		  
+	  
+	  <div id="content"><p style="text-align:center">Loading Canvas...</p></div>
+      
+	  <foot id="measList">
+		<ul id="measUl">
+		<!--<p style="text-align:center">No item set</p>-->
+		</ul>
+	  </foot>
+
+	  
+	  
+	  
+	  
+	  
+	</div> <!-- Page ende -->
+	
+	<!-- Javascript einbinden -->
+	<script type="text/javascript" src="js/draw.js"></script>
+	<script type="text/javascript" src="js/cordova.js"></script>
+	<script type="text/javascript" src="js/hammer.js"></script>
+	
+	
+	
+	
+  </body>
+  </html>

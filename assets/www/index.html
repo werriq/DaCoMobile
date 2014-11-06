@@ -24,20 +24,111 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
+		
+		
+  	<!--	<script type="text/javascript" charset="utf-8" />
+	  -->
+  
+  
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova </h1>
+        <!-- <div class="app">	-->
+            <h1>Apache Cordova</h1>
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
-			  <a href="DaCoMobile/index.html" class="Btn">Go to DaCoMobile</a>
             </div>
-        </div>
+			
+			<br>
+			<br>
+			
+			<!-- my qcode -->
+			
+		  <h1>Example Acceleration</h1>
+		  <p>
+			<input type="button" class="btnnumber" value="getcurrentacceleration" onclick='accee()'>
+			<br>
+			<p>X: <input type="textarea" id="txtacX" readonly value="" /></p>
+			<p>Y: <input type="textarea" id="txtacY" readonly value="" /></p>
+			<p>Z: <input type="textarea" id="txtacZ" readonly value="" /></p>
+			<br>
+		  	<input type="button" class="btnnumber" value="Hinweis" onclick='Hinweis()'>
+			<br>
+		  </p>
+			
+		  
+		  <h1>Example Picture by Cam</h1>
+		  <p>
+			<input type="button" class="btnnumber" value="Take a picture" onclick='TakePic()'>
+			<br>
+			<img class="ImgSmall" id="imgTP" src="img/logo.png" />
+			<br>
+			<div class="ImgSmall" id="imgTP2" ><canvas id="ImgCanvas">Your browser doesn't support canvas.</canvas></div>
+			<br>
+			<label>Bildpfad: </label><label id="TPPath">file:///storage/sdcard0/DCIM/Camera/1413263770388.jpg</label>
+			<br><br>
+			<input type="button" class="btnnumber" value="Draw on the picture" onclick='DrawOnCanvas()'>
+			<br><br>
+			<input type="button" class="btnnumber" value="ImageToCanvas" onclick='ImageToCanvas()'>  
+			<br><br>
+			<input type="button" class="btnnumber" value="Save Canvas Picture" onclick='FSsavePicture()'>  
+			<br>
+			<input type="button" class="btnnumber" value="ItC" onclick='ItC()'>  
+			<br>
+		  </p>
+        
+	  	  <h1>Get Connection Info</h1>
+	  	  <p>
+			<input type="button" class="btnnumber" value="Get Connecioninfo" onclick='checkConnection()'>
+			<br>
+	  	  </p>
+		  
+	  	  <h1>Do some File Operations</h1>
+	  		<p>
+				<input type="button" class="btnnumber" value="Write something into a file" onclick='FSSchreiben("newWrite")'>
+				<br>
+				<input type="button" class="btnnumber" value="Add something into a file" onclick='FSSchreiben("addWrite")'>
+				<br>
+	  	  </p>
+		  
+		  
+	  <h1>Do some Scans</h1>
+	  <p>
+		<p><a href="#" class="btnnumber" id="scan">SCAN</a></p>
+		<p><a href="#" class="btnnumber" id="encode">ENCODE</a></p>
+		<br>
+		<p><a href="DaCoMobile/index.html" class="btnnumber">GoTo DaCoMobile (buildPhonegap)</a></p>
+		<br>
+		
+		<br>
+	  </p>
+		  
+	  
+	  <h1>Do some Drawings</h1>
+	  <p>
+		<a href="draw.html" class="btnnumber">go to drawPage</a>
+		<br>
+		<br>
+	  </p>
+	  
+	  
+	  <h1>Do some Hammertime</h1>
+	  <p>
+		<input type="button" class="btnnumber" value="pan with hammer" onclick='hammerPan()'>
+		<br>
+		<div id="HammerDiv">HammerDiv</div>
+		<canvas class="HammerDivPop" id="HammerCanvas">Your browser doesn't support HammerCanvas.</canvas>
+		<br>
+	  </p>
+		  <!-- </div>	-->
+		
+		
         <script type="text/javascript" src="js/cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
+	    <script type="text/javascript" src="js/hammer.js"></script>
+		
+  		<script type="text/javascript">
             app.initialize();
-        </script>
-    </body>
-</html>
+  		</script>
+	</body>
+  </html>
