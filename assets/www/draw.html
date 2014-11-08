@@ -10,30 +10,49 @@
   
   
   <body>
-	<div id="page">		
+	<div id="page">
 		  
-		  <nav>
-            <ul>
+		<nav>
+        	<ul>
 			  <li><a onclick="newCanvas()">New</a></li>
 			  <li><a href="index.html">Zurück</a></li>
 			  <li><a id="aTool" onclick="toggleTool()">Tools</a></li>
-			  <li><a id="aError" onclick="toggleError()">Fehler: keine Auswahl</a></li>
+			  <li><a id="aError" onclick="showErrorList()">Fehler: keine Auswahl</a></li>
             </ul>
-		  </nav>
+		</nav>
 		  
 	  
-	  <div id="content"><p style="text-align:center">Loading Canvas...</p></div>
+	  	<div id="content">
+		  	<p style="text-align:center">Loading Canvas...</p>
+		</div>
       
-	  
-	  
-	  <foot id="measList">
-		<ul id="measUl">
-		<!--<p style="text-align:center">No item set</p>-->
-		</ul>
-	  </foot>
+		<foot id="measList">
+			<ul id="measUl">
+				<!--<p style="text-align:center">No item set</p>-->
+			</ul>
+	  	</foot>
 
 	  
-	  
+	  	//Auswahlmenus rechte Seite
+		<rMenu id="errorList">
+		  <ul id="measUl">
+			<li onclick="showSubErrorList(this)">T##: Glasfehler</li>
+			    <ul class="measUl_sub" id="measUl_T">
+				  <li onclick="selectOSC(this)">T01: Kratzer</li>
+				  <li onclick="selectOSC(this)">T02: Bruch</li>
+				</ul>
+			<li onclick="showSubErrorList(this)">F##: Rahmenfehler</li>
+				<ul class="measUl_sub" id="measUl_F">
+				  <li onclick="selectOSC(this)">F01: Kratzer</li>
+				  <li onclick="selectOSC(this)">F02: Bruch</li>
+				</ul>
+			<li onclick="showSubErrorList(this)">Z##: Zellfehler</li>
+			    <ul class="measUl_sub" id="measUl_Z">
+			  		<li onclick="selectOSC(this)">Z01: Kratzer</li>
+			  		<li onclick="selectOSC(this)">Z02: Bruch</li>
+				</ul>
+		  </ul>  
+		</rMenu>  
 	  
 	  
 	  

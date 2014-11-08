@@ -182,4 +182,37 @@ foot ul li {
 }
 
 
+rMenu {
+  position: absolute;
+  width: 80%;
+  top: 44px;
+  right: 0px;
+  background-color: #00A6D6;
+  z-index:2000;
+  visibility: hidden;
+}
 
+rMenu ul {
+  margin-top: 0px;
+  padding: 4px 4px 4px 4px;
+}
+
+.measUl_sub {
+  display: none;
+}
+
+rMenu ul li {
+  min-height: 35px;
+  list-style: none;
+  border-bottom: 1px solid #E1DFD1;
+  padding-left: 2px;
+  padding-right: 2px;
+  
+  font-size: 25px;
+  color: white;
+}
+
+rMenu ul li ul {
+  display: none;
+  height: 0px;
+}  

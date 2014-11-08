@@ -143,21 +143,31 @@ function toggleTool(){
 	document.getElementById("aTool").innerText = tool; //Aktualisiere Anzeige mit aktuellem tool
 }
 
-function toggleError(){
-	error = document.getElementById("aError").innerText.replace("Fehler: ","");
-	if (error === "T99"){
-		error = "A120";
-	} else if (error === "A120"){
-		error = "T12";
-	} else {
-		error = "T99";
-	}
-	document.getElementById("aError").innerText = "Fehler: " + error; //Aktualisiere Anzeige mit aktuellem tool
+function showErrorList(){
+	document.getElementById("errorList").style.visibility = "visible";
 }
 
+function showSubErrorList(selection){
+	var splitted = selection.innerText.split("##:");
+	
+document.getElementById("aError").innerText = "Fehler: " + document.getElementById("measUl_"+splitted[0]).style.display;
+	if ("inline" === document.getElementById("measUl_"+splitted[0]).style.display) {
+		document.getElementById("measUl_"+splitted[0]).style.display = "none";
+		document.getElementById("measUl_"+splitted[0]).style.height = "0px";
+	} else {
+		document.getElementById("measUl_"+splitted[0]).style.display = "inline";
+		document.getElementById("measUl_"+splitted[0]).style.height = "";
+	}
+}
+
+function selectOSC(selection){
+	var splitted = selection.innerText.split(":");
+	error = splitted[0];
+	document.getElementById("aError").innerText = "Fehler: " + error; //Aktualisiere Anzeige mit aktuellem tool
+	document.getElementById("errorList").style.visibility = "hidden";
+}
 
 function addList(errorText){
-   
 	// Make the list itself which is a <ul>
     var listElement = document.getElementById("measUl");
     // create a <li> for each one.
@@ -166,9 +176,6 @@ function addList(errorText){
     listItem.innerHTML = errorText;
     // add listItem to the listElement
     listElement.appendChild(listItem);
-	
-	alert(ErrorData.length);
-
 }
 
 function selectError(el){
