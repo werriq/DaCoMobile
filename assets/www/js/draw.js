@@ -3,24 +3,29 @@
 
 var ctx;
 var color = "rgba(0, 166, 214, 0.3)";	
-var tool = "rect";
+var tool = "rect"; //mark //pen
 
 var xStM, yStM; //xStartModule, yStartModule
 var cellCount = 60;
 var stringCount = 6;
 var stringStep, cellStep;
 // Establish the array which acts as a data source for the list
-var error = "empty";
-var ErrorData = [ 'A01:F05' , 'F08:T09' , 'C06:T56' , 'Green' , 'Black' , 'Orange'];
+var error = "keine Auswahl";
+var ErrorData = [];
 
 document.addEventListener( "DOMContentLoaded", function(){
 
 	// setup a new canvas for drawing wait for device init
     setTimeout(function(){
-	   newCanvas();
+		document.getElementById("aTool").innerText = tool; //Zeige aktuelles tool
+		document.getElementById("aError").innerText = "Fehler: " + error; //Zeige aktuellen Fehler
+		
+		newCanvas(); //Öffne das Canvas
+		
     }, 1000);
 
 }, false );
+
 
 // function to setup a new canvas for drawing
 function newCanvas(){
@@ -46,17 +51,14 @@ function newCanvas(){
 }
 
 
-function selectTool(el){
-	el.style.borderColor = "#fff";
-	tool = el.id;
-	document.getElementById("choosenTool").value = tool;
+function TPLoad(){
+	
+	var image = new Image(); //Bild laden
+	image.src = window.localStorage.getItem("picURI");
+	var canvas = document.getElementById('canvas');
+	ctx.drawImage (image,0,0,image.width,image.height,0,0,canvas.scrollWidth,canvas.scrollHeight);
 }
 
-function selectColor(el){
-    color = window.getComputedStyle(el).backgroundColor;
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-}
 
 // prototype to	start drawing on touch using canvas moveTo and lineTo
 var drawTouch = function() {
@@ -114,6 +116,7 @@ var drawTouch = function() {
 				ctx.stroke();
 			}
 			
+			toggleTool();
 			//Werte für Fehlereintrag sichern
 			xStM = xStart;
 			yStM = yStart;
@@ -121,97 +124,37 @@ var drawTouch = function() {
 			markError(x, y);
 		}
 	};
+	
     document.getElementById("canvas").addEventListener("touchstart", start, false);
 	document.getElementById("canvas").addEventListener("touchmove", move, false);
 	document.getElementById("canvas").addEventListener("touchend", end, false);
 }; 
-    
-// prototype to	start drawing on pointer(microsoft ie) using canvas moveTo and lineTo
-var drawPointer = function() {
-	var start = function(e) {
-        e = e.originalEvent;
-		ctx.beginPath();
-		x = e.pageX;
-		y = e.pageY-44;
-		ctx.moveTo(x,y);
-	};
-	var move = function(e) {
-		e.preventDefault();
-        e = e.originalEvent;
-		x = e.pageX;
-		y = e.pageY-44;
-		ctx.lineTo(x,y);
-		ctx.stroke();
-    };
-    document.getElementById("canvas").addEventListener("MSPointerDown", start, false);
-	document.getElementById("canvas").addEventListener("MSPointerMove", move, false);
-};        
-
-// prototype to	start drawing on mouse using canvas moveTo and lineTo
-var drawMouse = function() {
-	var clicked = 0;
-	var start = function(e) {
-		clicked = 1;
-		ctx.beginPath();
-		x = e.pageX;
-		y = e.pageY-44;
-		ctx.moveTo(x,y);
-	};
-	var move = function(e) {
-		if(clicked){
-			x = e.pageX;
-			y = e.pageY-44;
-			ctx.lineTo(x,y);
-			ctx.stroke();
-		}
-	};
-	var stop = function(e) {
-		clicked = 0;
-	};
-    document.getElementById("canvas").addEventListener("mousedown", start, false);
-	document.getElementById("canvas").addEventListener("mousemove", move, false);
-	document.addEventListener("mouseup", stop, false);
-};
+  
 
 
-function TPLoad(){
-	
-	var image = new Image(); //Bild laden
-	image.src = window.localStorage.getItem("picURI");
-	var canvas = document.getElementById('canvas');
-	ctx.drawImage (image,0,0,image.width,image.height,0,0,canvas.scrollWidth,canvas.scrollHeight);
+function toggleTool(){
+	if (tool === "rect"){
+		tool = "mark";
+	} else if (tool === "mark"){
+		tool = "rect";
+	} else {
+		tool = "mark";
+	}
+	document.getElementById("aTool").innerText = tool; //Aktualisiere Anzeige mit aktuellem tool
 }
 
-
-function makeList(){
-
-	// Make a container element for the list - which is a <div>
-   	// You don't actually need this container to make it work
-    var listContainer = document.getElementById("measList");
-
-    // add it to the page
-    //document.getElementsByTagName("body")[0].appendChild(listContainer);
-
- 	// Make the list itself which is a <ul>
-    var listElement = document.getElementById("measUl");
-
-    // add it to the page
-    listContainer.appendChild(listElement);
-
-    // Set up a loop that goes through the items in listItems one at a time
-   	var numberOfListItems = ErrorData.length;
-
-    for( var i =  0 ; i < numberOfListItems ; ++i){
-   	
-    	// create a <li> for each one.
-    	var listItem = document.createElement("li");
-   		// add the item text
-    	listItem.innerHTML = ErrorData[i];
-    	// add listItem to the listElement
-    	listElement.appendChild(listItem);
-
-    }
+function toggleError(){
+	error = document.getElementById("aError").innerText.replace("Fehler: ","");
+	if (error === "T99"){
+		error = "A120";
+	} else if (error === "A120"){
+		error = "T12";
+	} else {
+		error = "T99";
+	}
+	document.getElementById("aError").innerText = "Fehler: " + error; //Aktualisiere Anzeige mit aktuellem tool
 }
+
 
 function addList(errorText){
    
@@ -223,6 +166,8 @@ function addList(errorText){
     listItem.innerHTML = errorText;
     // add listItem to the listElement
     listElement.appendChild(listItem);
+	
+	alert(ErrorData.length);
 
 }
 
@@ -254,12 +199,11 @@ function markError(x, y){
 function addError(cell){
 	var newError = cell + ":" + error;
 	ErrorData.push(newError);
-	if(ErrorData.length === 0){
-		makeList();
-	} else{
-		addList(newError);
-	}
+	addList(newError);
 }
+
+
+
 
 //Führende Nullen hinzufügen:
 function addLeadingZeros(number, length) {

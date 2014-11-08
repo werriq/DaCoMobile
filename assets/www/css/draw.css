@@ -50,13 +50,15 @@ nav ul li {
     border-right: 1px solid #dfdfdf;
 }
 nav ul li:hover > ul {
-    visibility: visible;
+    /*visibility: visible;*/
 	z-index:1000;
 }
 nav ul li:hover > a {
     color: #FAFAFA;
+	background-color: #00A6D6;
 }
 nav ul li a {
+  	height: 44px;
     text-decoration: none;
     display: block;
     color: #333;
@@ -68,11 +70,13 @@ nav ul li a {
     transition: background 0.3s ease-out 0s;
 }
 
+/*
 nav ul li ul{
     display: inline;
     visibility: hidden;
     position: absolute;
     padding:0px;
+	z-index:1000;
 }
 nav ul li ul li{
     float: none;
@@ -87,7 +91,7 @@ nav ul li ul li a:hover{
 	height: 50px;
     border:2px dashed Black;
 	background-color: #00A6D6;
-	/*visibility: hidden;*/
+	/*visibility: hidden;
 }
 
 /*nav ul li > ul li a:hover{
@@ -95,7 +99,7 @@ nav ul li ul li a:hover{
 }*/
 
 
-
+/*
 nav ul li.cat1:hover, nav ul li.cat1:hover {
     background-color: #00A6D6;
 }
@@ -132,6 +136,9 @@ nav ul li.cat5:hover a, nav ul li.cat5:hover > ul li a {
 .yellow{
   	background-color: #FFFF00;
 }
+
+*/
+
 
 
 #content{
