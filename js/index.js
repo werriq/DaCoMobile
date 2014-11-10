@@ -97,17 +97,77 @@ var app = {
 function TP(){
 	
 	alert("inside tp");
-	navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+	navigator.camera.getPicture(TPonSuccess, TPonFail, { quality: 50,
  	   destinationType: Camera.DestinationType.DATA_URL
 	});
 }
 
-function onSuccess(imageData) {
-	alert("success");
+function TPonSuccess(imageURI) {
     var image = document.getElementById('myImage');
-    image.src = "data:image/jpeg;base64," + imageData;
+    image.src = imageURI;
+	alert(image.src);
+	FSSchreiben("newWrite");
 }
 
-function onFail(message) {
+function TPonFail(message) {
     alert('Failed because: ' + message);
+	FSSchreiben("newWrite");
 }
+
+
+
+
+//### Dateien bearbeiten ###
+
+//Dateisystem laden
+function FSLoad(){
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, FSgot, FSfail);
+}
+
+function FSgot(fileSystem) {
+	fileSystem.root.getFile(FSPfad, {create: true, exclusive: false}, FSgotFileEntry, FSfail);
+};
+
+function FSgotFileEntry(fileEntry) {
+
+	if(FSSchreibart === "newWrite") {
+		fileEntry.createWriter(FSnewWrite, FSfail);
+	}
+	else if (FSSchreibart === "addWrite") {
+		fileEntry.createWriter(FSaddWrite,FSfail);
+	}
+};
+
+//Was soll geschrieben werden
+var FSText;
+var FSDateiname;
+var FSPfad;
+var FSSchreibart;
+
+function FSSchreiben(Schreibart) {
+	FSSchreibart = Schreibart;
+	FSPfad = "readme.txt";
+	FSText = prompt("Was wollen sie in die Datei schreiben?");
+	FSLoad();
+}
+
+function FSnewWrite(writer) {
+	writer.onwrite = function(evt) {
+		alert("Datei wurde überschrieben");
+	};
+	writer.write(FSText);
+};
+
+function FSaddWrite(writer) {
+	writer.onwrite = function(evt) {
+		alert("Text wurde der Datei hinzugefügt");
+	};
+	writer.seek(writer.length);
+	writer.write(FSText + ";" + document.getElementById('TPPath').innerHTML);
+};
+
+
+function FSfail(error) {
+    alert("Error while file operation: " + error.code);
+}
+
