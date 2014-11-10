@@ -14,7 +14,9 @@
     </author>
 
     <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
-
+	<gap:plugin name="org.apache.cordova.camera"/>
+		
+		
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="debug-server" required="true">
        <param name="domain" value="http://debug.phonegap.com"/>
