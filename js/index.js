@@ -103,9 +103,9 @@ function TP(){
 }
 
 function TPonSuccess(imageURI) {
-    var image = document.getElementById('myImage');
-    image.src = imageURI;
-	alert(image.src);
+    //var image = document.getElementById('myImage');
+    //image.src = imageURI;
+	alert(imageURI);
 	FSSchreiben("newWrite");
 }
 
