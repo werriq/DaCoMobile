@@ -97,20 +97,22 @@ var app = {
 function TP(){
 	
 	alert("inside tp");
-	navigator.camera.getPicture(TPonSuccess, TPonFail, { quality: 50,
- 	   destinationType: Camera.DestinationType.DATA_URL
+	navigator.camera.getPicture(TPonSuccess, TPonFail, { 
+		quality: 100,
+    	destinationType: Camera.DestinationType.FILE_URI,
+		saveToPhotoAlbum: true,
 	});
 }
 
 function TPonSuccess(imageURI) {
     //var image = document.getElementById('myImage');
     //image.src = imageURI;
-	alert(imageURI);
-	FSSchreiben("newWrite");
+	document.getElementById("pText").innerHTML = imageURI;
+	
 }
 
 function TPonFail(message) {
-    alert('Failed because: ' + message);
+    document.getElementById("pText").innerHTML = 'Failed because: ' + message;
 	FSSchreiben("newWrite");
 }
 
