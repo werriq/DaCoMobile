@@ -107,6 +107,11 @@ function TPonSuccess(imageURI) {
     //image.src = imageURI;
 	document.getElementById("pText").innerHTML = imageURI;
 	
+	window.localStorage.setItem("picURI",imageURI);
+	//Link öffnen
+	self.location.href="draw.html";
+
+	
 }
 
 function TPonFail(message) {

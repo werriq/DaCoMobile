@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sketch Pad</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" type="text/css" href="css/draw.css" />
+	
+  </head>
+  
+  
+  <body>
+	<div id="page">
+		  
+		<nav>
+        	<ul>
+			  <li><a onclick="newCanvas()">New</a></li>
+			  <li><a href="index.html">Zurück</a></li>
+			  <li><a id="aTool" onclick="toggleTool()">Tools</a></li>
+			  <li><a id="aError" onclick="showErrorList()">Fehler: keine Auswahl</a></li>
+            </ul>
+		</nav>
+		  
+	  
+	  	<div id="content">
+		  	<p style="text-align:center">Loading Canvas...</p>
+		</div>
+      
+		<foot id="measList">
+			<ul id="measUl">
+				<!--<p style="text-align:center">No item set</p>-->
+			</ul>
+	  	</foot>
+
+	  
+	  	<!--Auswahlmenus rechte Seite-->
+		<rMenu id="errorList">
+		  <ul id="measUl">
+			<li onclick="showSubErrorList(this)">T##: Glasfehler</li>
+			    <ul class="measUl_sub" id="measUl_T">
+				  <li onclick="selectOSC(this)">T01: Kratzer</li>
+				  <li onclick="selectOSC(this)">T02: Bruch</li>
+				</ul>
+			<li onclick="showSubErrorList(this)">F##: Rahmenfehler</li>
+				<ul class="measUl_sub" id="measUl_F">
+				  <li onclick="selectOSC(this)">F01: Kratzer</li>
+				  <li onclick="selectOSC(this)">F02: Bruch</li>
+				</ul>
+			<li onclick="showSubErrorList(this)">Z##: Zellfehler</li>
+			    <ul class="measUl_sub" id="measUl_Z">
+			  		<li onclick="selectOSC(this)">Z01: Kratzer</li>
+			  		<li onclick="selectOSC(this)">Z02: Bruch</li>
+				</ul>
+		  </ul>  
+		</rMenu>  
+	  
+	  
+	  
+	</div> <!-- Page ende -->
+	
+	<!-- Javascript einbinden -->
+	<script type="text/javascript" src="js/draw.js"></script>
+	<script type="text/javascript" src="js/cordova.js"></script>
+	<script type="text/javascript" src="js/hammer.js"></script>
+	
+	
+	
+	
+  </body>
+  </html>
