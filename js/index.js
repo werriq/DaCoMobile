@@ -95,8 +95,6 @@ var app = {
 };
 
 function TP(){
-	
-	alert("inside tp");
 	navigator.camera.getPicture(TPonSuccess, TPonFail, { 
 		quality: 100,
     	destinationType: Camera.DestinationType.FILE_URI,
@@ -121,24 +119,37 @@ function TPonFail(message) {
 
 //### Dateien bearbeiten ###
 
-//Dateisystem laden
+//Dateisystem laden etc
 function FSLoad(){
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, FSgot, FSfail);
 }
 
 function FSgot(fileSystem) {
-	fileSystem.root.getFile(FSPfad, {create: true, exclusive: false}, FSgotFileEntry, FSfail);
+	if (FSSchreibart === "read"){
+		fileSystem.root.getFile(FSPfad, null, FSgotFileEntry, FSfail);
+	}else{
+		fileSystem.root.getFile(FSPfad, {create: true, exclusive: false}, FSgotFileEntry, FSfail);
+	}
 };
 
 function FSgotFileEntry(fileEntry) {
 
 	if(FSSchreibart === "newWrite") {
 		fileEntry.createWriter(FSnewWrite, FSfail);
-	}
-	else if (FSSchreibart === "addWrite") {
+	} else if (FSSchreibart === "addWrite") {
 		fileEntry.createWriter(FSaddWrite,FSfail);
+	} else if (FSSchreibart === "read"){
+		fileEntry.file(FSgotFile, FSfail);
 	}
+	
 };
+
+function FSgotFile(file){
+        //readDataUrl(file);
+        readAsText(file);
+}
+//Ende: Dateisystem laden etc
+
 
 //Was soll geschrieben werden
 var FSText;
@@ -148,28 +159,55 @@ var FSSchreibart;
 
 function FSSchreiben(Schreibart) {
 	FSSchreibart = Schreibart;
-	FSPfad = "readme.txt";
-	FSText = prompt("Was wollen sie in die Datei schreiben?");
+	FSDateiname ="readme.txt";
+	FSPfad = "DaCoMobile/test/" + FSDateiname;
+	if(FSSchreibart != "read"){
+		FSText = prompt("Was wollen sie in die Datei schreiben?");
+	}
 	FSLoad();
 }
 
 function FSnewWrite(writer) {
 	writer.onwrite = function(evt) {
-		alert("Datei wurde überschrieben");
+		document.getElementById("pText").innerHTML = "Datei wurde überschrieben";
 	};
 	writer.write(FSText);
 };
 
 function FSaddWrite(writer) {
 	writer.onwrite = function(evt) {
-		alert("Text wurde der Datei hinzugefügt");
+		document.getElementById("pText").innerHTML = "Text wurde der Datei hinzugefügt";
 	};
 	writer.seek(writer.length);
-	writer.write(FSText + ";" + document.getElementById('TPPath').innerHTML);
+	writer.write(FSText + ";" + document.getElementById('pText').innerHTML);
 };
-
-
-function FSfail(error) {
-    alert("Error while file operation: " + error.code);
+	
+function readAsText(file) {
+	var reader = new FileReader();
+    reader.onloadend = function(evt) {
+         document.getElementById("pText").innerHTML = "Ausgelesen: " + evt.target.result;
+    };
+    reader.readAsText(file);
 }
 
+function FSfail(error) {
+    document.getElementById("pText").innerHTML = "Error while file operation: " + error.code;
+}
+	
+//### Dateien bearbeiten ENDE ###
+
+
+
+//### Hilfsfunktionen ###
+
+//Führende Nullen hinzufügen:
+function addLeadingZeros(number, length) {
+    var num = '' + number;
+    while (num.length < length) num = '0' + num;
+    return num;
+}
+
+//Führende Nullen entfernen:
+function delLeadingZeros(number){
+	return Number(number);
+}

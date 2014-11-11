@@ -3,14 +3,14 @@
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.phonegap.ryanw.barcodedemo"
         version   = "2.0.0">
-    <name>Scanner Demo and more</name>
+    <name>DaCoMobile</name>
 
     <description>
-        Scans barcodes.
+        DaCoMobile v alpha0.2
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+    <author>
+        Joris Novak with many thanks to phonegap team.
     </author>
 
     <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
