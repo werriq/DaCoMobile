@@ -22,7 +22,11 @@ document.addEventListener( "DOMContentLoaded", function(){
 		
 		newCanvas(); //Öffne das Canvas
 		
+		
+		
     }, 1000);
+	
+	alert(window.localStorage.getItem("serial"));
 
 }, false );
 

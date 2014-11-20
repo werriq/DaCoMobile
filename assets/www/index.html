@@ -89,12 +89,14 @@
 				<br>
 				<input type="button" class="btnnumber" value="Add something into a file" onclick='FSSchreiben("addWrite")'>
 				<br>
+			    <input type="button" class="btnnumber" value="Read something from a file" onclick='FSSchreiben("read")'>
+			    <br>
 	  	  </p>
 		  
 		  
 	  <h1>Do some Scans</h1>
 	  <p>
-		<p><a href="#" class="btnnumber" id="scan">SCAN</a></p>
+		<p><a onclick="scan()" class="btnnumber" id="scan">SCAN</a></p>
 		<p><a href="#" class="btnnumber" id="encode">ENCODE</a></p>
 		<br>
 		<p><a href="DaCoMobile/index.html" class="btnnumber">GoTo DaCoMobile (buildPhonegap)</a></p>
@@ -107,8 +109,11 @@
 	  <h1>Do some Drawings</h1>
 	  <p>
 		<a href="draw.html" class="btnnumber">go to drawPage</a>
-		<br>
-		<br>
+		<br><br>
+		<a href="main.html" class="btnnumber">go to mainPage</a>  
+		<br><br>
+		<br><br>
+		<a href="#" class="btnnumber" onclick="httpGet()">http get</a>
 	  </p>
 	  
 	  
@@ -125,7 +130,8 @@
 		
         <script type="text/javascript" src="js/cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-	    <script type="text/javascript" src="js/hammer.js"></script>
+	    <script type="text/javascript" src="js/barcodescanner.js"></script>
+		
 		
   		<script type="text/javascript">
             app.initialize();
