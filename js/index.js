@@ -27,8 +27,8 @@ var app = {
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById('scan').addEventListener('click', this.scan, false);
-        document.getElementById('encode').addEventListener('click', this.encode, false);
+        //document.getElementById('scan').addEventListener('click', this.scan, false);
+        //document.getElementById('encode').addEventListener('click', this.encode, false);
     },
 
     // deviceready Event Handler
@@ -51,8 +51,12 @@ var app = {
         console.log('Received Event: ' + id);
     },
 
-    scan: function() {
-        alert('scanning');
+    
+
+};
+
+function scan() {
+       	console.log('scanning');
         
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
@@ -67,20 +71,14 @@ var app = {
                 "text: " + result.text + "\n" +
                 "format: " + result.format + "\n" +
                 "cancelled: " + result.cancelled + "\n");
-            document.getElementById("info").innerHTML = result.text;
-            console.log(result);
-            /*
-            if (args.format == "QR_CODE") {
-                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
-            }
-            */
+           
 
         }, function (error) { 
             console.log("Scanning failed: ", error); 
         } );
-    },
+}
 
-    encode: function() {
+function encode() {
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function(success) {
@@ -89,8 +87,5 @@ var app = {
             alert("encoding failed: " + fail);
           }
         );
-
-    }
-
-};
+}
 
