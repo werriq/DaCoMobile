@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//DE">
+<!DOCTYPE html>
+<HTML lang="de">
+
+	<HEAD>
+		<META charset="utf-8">
+		<META name="viewport" content="width=device-width, initial-scale=1">
+		<META name="description" content="">
+		<META name="author" content="JN MTL">
+		
+		<TITLE>DaCoMobile MQT01</TITLE>
+		
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	
+	</HEAD>
+
+	<BODY>
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		  <div class="container-fluid">
+			<!-- Titel und Schalter werden für eine bessere mobile Ansicht zusammengefasst -->
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Navigation ein-/ausblenden</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#">DaCoMobile</a>
+			</div>
+
+			<!-- Alle Navigationslinks, Formulare und anderer Inhalt werden hier zusammengefasst und können dann ein- und ausgeblendet werden -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+					<li class="active"><a href="#">MQT01</a></li>
+				</ul>
+				<div class="navbar-header navbar-right"> 
+					<ul class="nav navbar-nav">
+						<li><a href="index.html"><span class="glyphicon glyphicon-wrench"></span></a></li>
+					</ul>
+				</div>
+			</div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+				
+		<br>
+		
+		<!-- Hauptpart / main part -->
+		<div class="container-fluid panel-center">
+			
+			<fieldset id="fieldsetPanelHeading">
+				<button type="button" class="btn btn-primary btn-lg" id="barcode-btn scan">
+					<span class="glyphicon glyphicon-barcode glyphicon-2x" area-hidden="true"></span>
+					<span class="glyphicon glyphicon-barcode glyphicon-2x" area-hidden="true"></span>
+					<span class="glyphicon glyphicon-barcode glyphicon-2x" area-hidden="true"></span>
+				</button>
+			</fieldset> <!-- fieldset panel-heading ENDE-->
+				
+			<br>
+
+			<fieldset id="fieldsetPanelBody">
+					
+				<!-- Foto Modul Label /input-group -->
+				<div class="input-group">
+				  <div class="input-group-btn">
+					<button type="button" class="btn btn-default" id="btnPicLabel">
+						<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
+						Label
+					</button>
+				  </div>
+				  
+				  <input class="form-control" id="deaktiviertesFeld txtPicLabel" type="text" placeholder="Foto Modul Label (nur erste Messung)" disabled>
+				  
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default dropdown-toggle" id="btnPicLabelMenu" data-toggle="dropdown" aria-expanded="false">
+							<span class="glyphicon glyphicon-likeText glyphicon-cog" area-hidden="true"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right" role="menu">
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-pencil" area-hidden="true"></span>
+									Platzhalter bearbeiten
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-remove" area-hidden="true"></span>
+									Platzhalter delete
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div><!-- Foto Modul Label /input-group ENDE-->
+				<br>
+				<!-- Foto Modul Frontseite /input-group -->
+				<div class="input-group">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default" id="btnPicFront">
+							<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
+							Frontseite
+						</button>
+					</div>
+					<input class="form-control" id="deaktiviertesFeld txtPicFront" type="text" placeholder="Foto Modul Frontseite" disabled>
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default dropdown-toggle" id="btnPicFrontMenu" data-toggle="dropdown" aria-expanded="false">
+							<span class="glyphicon glyphicon-likeText glyphicon-cog" area-hidden="true"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right" role="menu">
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-pencil" area-hidden="true"></span>
+									 Platzhalter bearbeiten
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-remove" area-hidden="true"></span>
+									Platzhalter delete
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div><!-- Foto Modul Frontseite /input-group ENDE-->
+				<br>
+				<!-- Foto Modul Rückseite /input-group -->
+				<div class="input-group">
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default" id="btnPicBack">
+							<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
+							Rückseite
+						</button>
+					</div>
+					<input class="form-control" id="deaktiviertesFeld txtPicBack" type="text" placeholder="Foto Modul Rückseite" disabled>
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default dropdown-toggle" id="btnPicBackMenu" data-toggle="dropdown" aria-expanded="false">
+							<span class="glyphicon glyphicon-likeText glyphicon-cog" area-hidden="true"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right" role="menu">
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-pencil" area-hidden="true"></span>
+									 Platzhalter bearbeiten
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="glyphicon glyphicon-remove" area-hidden="true"></span>
+									Platzhalter delete
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div><!-- Foto Modul Rückseite /input-group ENDE-->
+				<br>
+					
+				<!-- Tabelle für weitere Fotos -->
+				<table class="table table-striped" id="table-xtraPics">
+					<colgroup>
+						<col class="col-xs-10">
+						<col class="col-xs-1">
+					</colgroup>
+					<tbody>
+					</tbody>
+				</table>
+					
+				<!-- Weiteres Fotos hinzufügen / add  input groups -->
+				<button type="button" class="btn btn-default" onclick="addXtraPic()">
+					<span class="glyphicon glyphicon-likeText glyphicon-plus" area-hidden="true"></span>
+					<span class="glyphicon glyphicon-likeText glyphicon-camera" area-hidden="true"></span>
+				</button>
+					
+				<br>
+				
+			</fieldset> <!-- fieldset panel-body ENDE-->
+		
+			<br>
+				
+		<!-- TestButton für js --> 
+		<button type="button" class="btn btn-default" onclick="setDisable([['fieldsetPanelHeading',true],['fieldsetPanelBody',false]])">Testbutton für js</button>
+		<button type="button" class="btn btn-default" onclick="setDisable([['fieldsetPanelHeading',false],['fieldsetPanelBody',true]])">Testbutton2 für js</button>
+		</div> <!-- Hauptpart / main part ENDE -->
+		
+		<!-- /.container --><!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster		-->
+	  	<script type="text/javascript" src="js/index.js"></script>
+	  	<script type="text/javascript" src="cordova.js"></script>
+	  	<script type="text/javascript" src="barcodescanner.js"></script>
+	  
+	  	<script type="text/javascript" src="js/MQT01.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+		
+	</BODY>
+</HTML>

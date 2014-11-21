@@ -1,22 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//DE">
 <!DOCTYPE html>
-<!--
-    xxxxx
--->
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>mainDaCoMobile</title>
+
+<HTML lang="de">
+  	
+  	<head>
+	  <META charset="utf-8">
+	  <META name="viewport" content="width=device-width, initial-scale=1">
+	  <META name="description" content="">
+	  <META name="author" content="JN MTL">
+
+	  <TITLE>DaCoMobile Mainpage</TITLE>
+
+	  <!-- implement CSS -->
+	  <link rel="stylesheet" type="text/css" href="css/index.css">
+	  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
     </head>
     <body>
         <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+		  
+		  <!-- Menuleiste / Navbar -->
+		  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+			  <!-- Titel und Schalter werden für eine bessere mobile Ansicht zusammengefasst -->
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				  <span class="sr-only">Navigation ein-/ausblenden</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">DaCoMobile</a>
+			  </div>
+
+			  <!-- Alle Navigationslinks, Formulare und anderer Inhalt werden hier zusammengefasst und können dann ein- und ausgeblendet werden -->
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				  <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+				</ul>
+				<div class="navbar-header navbar-right"> 
+				  <ul class="nav navbar-nav">
+					<li><a href="index.html"><span class="glyphicon glyphicon-wrench"></span></a></li>
+				  </ul>
+				</div>
+			  </div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		  </nav> <!-- Menuleiste / Navbar ENDE -->
+
+		  <br>
+
+		  <!-- Hauptpart / main part -->
+		  <DIV class="container">
+
+			<div class="table-responsive"> <!-- Tabelle: Testauswahl -->
+			  <table class="table table-bordered table-striped">
+				<colgroup>
+				  <col class="col-xs-2">
+				  <col class="col-xs-10">
+				  <col class="col-xs-1">
+				</colgroup>
+				<thead>
+				  <tr>
+					<th>Nr.</th>
+					<th>Testname</th>
+					<th class="td-center">Hilfe</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td><a href="MQT01.html" class="text-left">MQT 01</a></td>
+					<td><a href="MQT01.html" class="text-left">Testnr01</a></td>
+					<td class="td-center"><a href="#"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+				  </tr>
+				  <tr>
+					<td>MQT 02</td>
+					<td>Testnr02</td>
+					<td>Hilfe02</td>
+				  </tr>
+				</tbody>
+			  </table>
+			</div> <!-- Tabelle: Testauswahl ENDE -->
+
+			<div id="deviceready" class="blink">
+			  <p class="event listening">Connecting to Device</p>
+			  <p class="event received">Device is Ready</p>
+			</div>
+			
+		  </DIV> <!-- Hauptpart / main part ENDE -->
+			
+		</div>  <!-- div class="app" -->
+		  
+		  
+		  
+		  <!-- /.container --><!-- Bootstrap core JavaScript
+		  ================================================== -->
+		  <!-- Placed at the end of the document so the pages load faster -->
+	  	  <script type="text/javascript" src="js/index.js"></script>
+	  	  <script type="text/javascript" src="cordova.js"></script>
+		  <script type="text/javascript" src="barcodescanner.js"></script>
+		  <SCRIPT src="js/jquery.min.js"></SCRIPT>
+		  <SCRIPT src="js/bootstrap.min.js"></SCRIPT>
+		  	<script type="text/javascript">
+            	app.initialize();
+				</script>
+		  
+		  
+		  <!--
             <p><a href="#" class="topcoat-button" id="scan">SCAN</a></p>
             <p><a href="#" class="topcoat-button" id="encode">ENCODE</a></p>
             <p id="info"></p>
@@ -25,11 +114,9 @@
 		    <p><a href="#" class="topcoat-button" onclick="FSSchreiben('newWrite')">writeNew</a></p>
 		  <p><a href="#" class="topcoat-button" onclick="FSSchreiben('read')">Read Text</a></p>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        //<script type="text/javascript" src="barcodescanner.js"></script>
+        
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        
+		-->
     </body>
 </html>
