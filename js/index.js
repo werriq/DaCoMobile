@@ -89,3 +89,10 @@ function encode() {
         );
 }
 
+
+
+var test;
+function testFn() {
+	test = prompt("Eingabe","Default Eingabe");
+	alert(test);
+}

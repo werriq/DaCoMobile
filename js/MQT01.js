@@ -1,4 +1,61 @@
 
+var module = {
+	serial:"empty",
+	Enummer:"E#####-T1",
+	pic: [],
+	picCount: 0,
+	
+	addPicPath: function (picPath) {
+		//alert("inside" + this.picCount);
+		this.pic.push([this.picCount, picPath]);
+		this.picCount += 1;
+		/*for(var ABC in this.pic){
+			alert("picCount: " + this.pic[ABC][0] + " \npicPath: " + this.pic[ABC][1]);
+		}*/
+	},
+	
+};
+
+	
+function testFn2() {
+	alert(module.serial);
+	window.localStorage.setItem("module",module);
+	
+	//Link öffnen
+	self.location.href="draw.html";
+}
+
+
+//### Take a Picture with Camera ###
+function TakePic(moduleItem) {
+	//moduleItem noch verwursten, was vom Modul wird geknipst
+	navigator.camera.getPicture(TPonSuccess, TPonFail, { 
+		quality: 100,
+    	destinationType: Camera.DestinationType.FILE_URI,
+		saveToPhotoAlbum: true,
+		});
+}
+
+function TPonSuccess(imageURI) {
+    var image = document.getElementById('imgTP');
+	var path = document.getElementById('TPPath');
+    image.src = imageURI;	//"data:image/jpeg;base64," + imageData;
+	document.getElementById('TPPath').innerHTML = imageURI;
+	
+	module.addPicPath(imageURI);
+	window.localStorage.setItem("module",module);
+	
+	//Link öffnen
+	self.location.href="draw.html";
+
+}
+
+function TPonFail(message) {
+    alert('Failed because: ' + message);
+}
+
+//### Take a Picture with Camera Ende###
+
 //### Weitere Bilder ###
 var picIndex = 0;
 function addXtraPic(picPfad) {
@@ -51,7 +108,6 @@ function add(type) {
 function setDisable(Ids) {
 	/*	Ids format: [['fieldset Id',true],['fieldset2 Id',false], ... ]
 		true = wird disabled, false = wird enabled	*/
-		
 	for(i=0;i<Ids.length;i++){
 		document.getElementById(Ids[i][0]).disabled = Ids[i][1];
 	}

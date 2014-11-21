@@ -6,6 +6,8 @@ var color = "rgba(0, 166, 214, 0.3)";
 var tool = "rect"; //mark //pen
 
 var xStM, yStM; //xStartModule, yStartModule
+
+var module;
 var cellCount = 60;
 var stringCount = 6;
 var stringStep, cellStep;
@@ -17,6 +19,8 @@ document.addEventListener( "DOMContentLoaded", function(){
 
 	// setup a new canvas for drawing wait for device init
     setTimeout(function(){
+		module = window.localStorage.getItem("module");//lade modulDaten
+		alert(module.serial);
 		document.getElementById("aTool").innerText = tool; //Zeige aktuelles tool
 		document.getElementById("aError").innerText = "Fehler: " + error; //Zeige aktuellen Fehler
 		

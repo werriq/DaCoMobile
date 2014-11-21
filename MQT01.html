@@ -65,7 +65,7 @@
 				<!-- Foto Modul Label /input-group -->
 				<div class="input-group">
 				  <div class="input-group-btn">
-					<button type="button" class="btn btn-default" id="btnPicLabel">
+					<button type="button" class="btn btn-default" id="btnPicLabel" onclick="TakePic(this.id)">
 						<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
 						Label
 					</button>
@@ -180,6 +180,10 @@
 		<!-- TestButton für js --> 
 		<button type="button" class="btn btn-default" onclick="setDisable([['fieldsetPanelHeading',true],['fieldsetPanelBody',false]])">Testbutton für js</button>
 		<button type="button" class="btn btn-default" onclick="setDisable([['fieldsetPanelHeading',false],['fieldsetPanelBody',true]])">Testbutton2 für js</button>
+		<br>
+		  <button type="button" class="btn btn-default" onclick="module.addPicPath('huhu')">Testbutton für testFnfillSerial()</button>
+		  <button type="button" class="btn btn-default" onclick="testFn2()">Testbutton2 für js</button>
+		
 		</div> <!-- Hauptpart / main part ENDE -->
 		
 		<!-- /.container --><!-- Bootstrap core JavaScript
