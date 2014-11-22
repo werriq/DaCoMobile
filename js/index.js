@@ -56,8 +56,8 @@ var app = {
 };
 
 function scan() {
-       	console.log('scanning');
-        alert("inside scan");
+       alert('scanning');
+        
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) { 
@@ -65,14 +65,19 @@ function scan() {
             alert("We got a barcode\n" + 
             "Result: " + result.text + "\n" + 
             "Format: " + result.format + "\n" + 
-            "Cancelled: " + result.cancelled);    
-				
-				
-           setDisable([['fieldsetPanelHeading',true],['fieldsetPanelBody',false]]);
+            "Cancelled: " + result.cancelled);  
 
+           console.log("Scanner result: \n" +
+                "text: " + result.text + "\n" +
+                "format: " + result.format + "\n" +
+                "cancelled: " + result.cancelled + "\n");
+            document.getElementById("info").innerHTML = result.text;
+            console.log(result);
+            
         }, function (error) { 
-            alert("Scanning failed: ", error); 
+            console.log("Scanning failed: ", error); 
         } );
+
 }
 
 function encode() {
