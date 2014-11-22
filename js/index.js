@@ -57,7 +57,7 @@ var app = {
 
 function scan() {
        	console.log('scanning');
-        
+        alert("inside scan");
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) { 
@@ -71,7 +71,7 @@ function scan() {
            setDisable([['fieldsetPanelHeading',true],['fieldsetPanelBody',false]]);
 
         }, function (error) { 
-            console.log("Scanning failed: ", error); 
+            alert("Scanning failed: ", error); 
         } );
 }
 
