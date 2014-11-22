@@ -14,13 +14,14 @@ var module = {
 		}*/
 	},
 	
+	
 };
 
 	
 function testFn2() {
 	alert(module.serial);
-	window.localStorage.setItem("module",module);
 	
+	window.localStorage.setItem('module', JSON.stringify(module));
 	//Link öffnen
 	self.location.href="draw.html";
 }
@@ -43,7 +44,7 @@ function TPonSuccess(imageURI) {
 	document.getElementById('TPPath').innerHTML = imageURI;
 	
 	module.addPicPath(imageURI);
-	window.localStorage.setItem("module",module);
+	window.localStorage.setItem('module', JSON.stringify(module));
 	
 	//Link öffnen
 	self.location.href="draw.html";
