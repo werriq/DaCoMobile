@@ -44,7 +44,7 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-
+alert("inside received");
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
@@ -56,10 +56,10 @@ var app = {
 };
 
 function scan() {
-       alert('scanning');
+       
         
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
+alert('scanning');
         scanner.scan( function (result) { 
 
             alert("We got a barcode\n" + 
