@@ -19,6 +19,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
+		alert("inside intitialize");
         this.bindEvents();
     },
     // Bind Event Listeners
@@ -41,10 +42,11 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+alert("inside received1");
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-alert("inside received");
+alert("inside received3");
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
