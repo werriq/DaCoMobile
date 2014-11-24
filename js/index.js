@@ -114,10 +114,7 @@ function testFn2() {
 //#############
 //MQT01
 var module = {
-	serial:"empty",
-	Enummer:"E#####-T1",
-	pic: [],
-	picCount: 0
+	serial:"empty"
 };
 	
 
