@@ -9,14 +9,18 @@ var module = {
 		//alert("inside" + this.picCount);
 		this.pic.push([this.picCount, picPath]);
 		this.picCount += 1;
-		/*for(var ABC in this.pic){
-			alert("picCount: " + this.pic[ABC][0] + " \npicPath: " + this.pic[ABC][1]);
-		}*/
+		for(var ABC in this.pic){
+			//alert("picCount: " + this.pic[ABC][0] + " \npicPath: " + this.pic[ABC][1]);
+		}
 	},
 	
 	
 };
 
+function offlineTP(imageURI){
+	module.addPicPath(imageURI);
+	addXtraPic(imageURI);
+}
 	
 function testFn2() {
 	alert(module.serial);
@@ -40,21 +44,19 @@ function TakePic(moduleItem) {
 function TPonSuccess(imageURI) {
     var image = document.getElementById('imgTP');
 	var path = document.getElementById('TPPath');
-    image.src = imageURI;	//"data:image/jpeg;base64," + imageData;
-	document.getElementById('TPPath').innerHTML = imageURI;
 	
 	module.addPicPath(imageURI);
+	addXtraPic(imageURI);
 	window.localStorage.setItem('module', JSON.stringify(module));
 	
 	//Link öffnen
-	self.location.href="draw.html";
+	//self.location.href="draw.html";
 
 }
 
 function TPonFail(message) {
     alert('Failed because: ' + message);
 }
-
 //### Take a Picture with Camera Ende###
 
 //### Weitere Bilder ###
@@ -64,14 +66,14 @@ function addXtraPic(picPfad) {
 	var table = document.getElementById("table-xtraPics");
 
 	// Create an empty <tr> element and add it to the 1st position of the table:
-	var row = table.insertRow(document.getElementsByTagName("tr").length);
+	var row = table.insertRow(table.rows.length);
 	row.id = picIndex;
 	//row.id = picIndex;
 	// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 	var cell1 = row.insertCell(0);
 	var cell2 = row.insertCell(1);
 	// Add some text to the new cells:
-	cell1.innerHTML = "Bild Nummer: " + picIndex;
+	cell1.innerHTML = picPfad;
 	cell2.class = "td-right";
 	cell2.innerHTML = '<button type="button" class="btn btn-default" style="float:right" onclick="delXtraPic(' + picIndex + ')"><span class="glyphicon glyphicon-remove"></span></button>';
 	

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.werriq.dacomobile"
+        id        = "com.werricorp.werriq.dacomobile"
         version   = "0.0.2">
     <name>DaCoMobile</name>
 
     <description>
-        DaCoMobile v alpha0.2
+        DaCoMobile v alpha0.3
     </description>
 
     <author>
-        Joris Novak with many thanks to phonegap team.
+        Joris Novak with many thanks to phonegap and bootstrap team.
     </author>
 
     <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
