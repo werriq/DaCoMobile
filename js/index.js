@@ -113,3 +113,63 @@ function testFn2() {
 
 //#############
 //MQT01
+
+//### Take a Picture with Camera ###
+function TakePic(moduleItem) {
+	//moduleItem noch verwursten, was vom Modul wird geknipst
+	navigator.camera.getPicture(TPonSuccess, TPonFail, { 
+		quality: 100,
+    	destinationType: Camera.DestinationType.FILE_URI,
+		saveToPhotoAlbum: true,
+		});
+}
+
+function TPonSuccess(imageURI) {
+    var image = document.getElementById('imgTP');
+	var path = document.getElementById('TPPath');
+	
+	module.addPicPath(imageURI);
+	addXtraPic(imageURI);
+	window.localStorage.setItem('module', JSON.stringify(module));
+	
+	//Link öffnen
+	//self.location.href="draw.html";
+
+}
+
+function TPonFail(message) {
+    alert('Failed because: ' + message);
+}
+//### Take a Picture with Camera Ende###
+
+//### Weitere Bilder ###
+var picIndex = 0;
+function addXtraPic(picPfad) {
+	// Find a <table> element with id="myTable":
+	var table = document.getElementById("table-xtraPics");
+
+	// Create an empty <tr> element and add it to the 1st position of the table:
+	var row = table.insertRow(table.rows.length);
+	row.id = picIndex;
+	//row.id = picIndex;
+	// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+	var cell1 = row.insertCell(0);
+	var cell2 = row.insertCell(1);
+	// Add some text to the new cells:
+	cell1.innerHTML = picPfad;
+	cell2.class = "td-right";
+	cell2.innerHTML = '<button type="button" class="btn btn-default" style="float:right" onclick="delXtraPic(' + picIndex + ')"><span class="glyphicon glyphicon-remove"></span></button>';
+	
+	picIndex +=1;
+}
+function delXtraPic(index) {
+	var table = document.getElementById("table-xtraPics");
+	var rows = table.rows;
+	for (i = 0; i < rows.length; i++) {
+        if(parseInt(rows[i].id) === parseInt(index)){
+			table.deleteRow(rows[i].rowIndex);
+		}
+    }
+}
+//### Weitere Bilder ENDE ###
+
