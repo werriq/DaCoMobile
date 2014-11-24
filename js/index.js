@@ -90,8 +90,26 @@ function goTo(page){
 	currentPage = page;
 }
 
+function offlineTP(imageURI){
+	module.addPicPath(imageURI);
+	addXtraPic(imageURI);
+}
+
+
+
 var test;
 function testFn() {
 	test = prompt("Eingabe","Default Eingabe");
 	alert(test);
 }
+
+function testFn2() {
+	alert(module.serial);
+	
+	window.localStorage.setItem('module', JSON.stringify(module));
+	//Link öffnen
+	self.location.href="draw.html";
+}
+
+//#############
+//MQT01

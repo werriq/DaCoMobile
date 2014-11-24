@@ -17,18 +17,9 @@ var module = {
 	
 };
 
-function offlineTP(imageURI){
-	module.addPicPath(imageURI);
-	addXtraPic(imageURI);
-}
+
 	
-function testFn2() {
-	alert(module.serial);
-	
-	window.localStorage.setItem('module', JSON.stringify(module));
-	//Link öffnen
-	self.location.href="draw.html";
-}
+
 
 
 //### Take a Picture with Camera ###
