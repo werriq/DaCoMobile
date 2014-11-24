@@ -12,7 +12,7 @@ var module = {
 		for(var ABC in this.pic){
 			//alert("picCount: " + this.pic[ABC][0] + " \npicPath: " + this.pic[ABC][1]);
 		}
-	},
+	}
 };
 
 
