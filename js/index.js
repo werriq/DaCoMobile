@@ -4,7 +4,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
-		alert("inside intitialize");
+		//alert("inside intitialize");
         this.bindEvents();
     },
     // Bind Event Listeners
