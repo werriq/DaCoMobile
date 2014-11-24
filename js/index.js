@@ -113,9 +113,7 @@ function testFn2() {
 
 //#############
 //MQT01
-var module = {
-	serial:"empty"
-};
+
 	
 
 
