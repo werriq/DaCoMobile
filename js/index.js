@@ -14,7 +14,8 @@ var app = {
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
 		alert("inside bindEvents");
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        //document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.addEventListener("deviceready", onDeviceReady, true);
         //document.getElementById('scan').addEventListener('click', this.scan, false);
         //document.getElementById('encode').addEventListener('click', this.encode, false);
     },
