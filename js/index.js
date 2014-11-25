@@ -91,7 +91,7 @@ function goTo(page){
 }
 
 function offlineTP(imageURI){
-	module.addPicPath(imageURI);
+	pvM.addPicPath(imageURI);
 	addXtraPic(imageURI);
 }
 
@@ -104,9 +104,9 @@ function testFn() {
 }
 
 function testFn2() {
-	alert(module.serial);
+	alert(pvM.serial);
 	
-	window.localStorage.setItem('module', JSON.stringify(module));
+	window.localStorage.setItem('pvM', JSON.stringify(pvM));
 	//Link öffnen
 	self.location.href="draw.html";
 }
@@ -139,7 +139,7 @@ function TPonSuccess(imageURI) {
     var image = document.getElementById('imgTP');
 	var path = document.getElementById('TPPath');
 	
-	module.addPicPath(imageURI);
+	pvM.addPicPath(imageURI);
 	addXtraPic(imageURI);
 	window.localStorage.setItem('module', JSON.stringify(module));
 	

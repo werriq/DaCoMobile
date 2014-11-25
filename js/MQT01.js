@@ -1,5 +1,5 @@
 
-var module = {
+var pvM = {
 	serial:"empty",
 	Enummer:"E#####-T1",
 	pic: [],
