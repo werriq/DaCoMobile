@@ -40,12 +40,8 @@ function TPonSuccess(imageURI) {
 	var path = document.getElementById('TPPath');
 	
 	pvM.addPicPath(imageURI);
-	addXtraPic(imageURI);
+	addPic(imageURI);
 	window.localStorage.setItem('pvM', JSON.stringify(pvM));
-	
-	//Link öffnen
-	//self.location.href="draw.html";
-
 }
 
 function TPonFail(message) {
