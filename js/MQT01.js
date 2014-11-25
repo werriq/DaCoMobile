@@ -136,7 +136,7 @@ function newCanvas(){
 function TPLoad(){
 	alert("inside tpload()");
 	var image = new Image(); //Bild laden
-	image.src = pvM.pic[0][2];
+	image.src = pvM.pic[pic.length][2];// noch variable gestalten
 	alert(image.height);
 	var canvas = document.getElementById("canvas");
 	ctx.drawImage (image,0,0,image.width,image.height,0,0,canvas.scrollWidth,canvas.scrollHeight);
