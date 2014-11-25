@@ -7,7 +7,7 @@ var pvM = {
 	
 	addPicPath: function (picPath) {
 		//alert("inside" + this.picCount);
-		this.pic.push([this.picCount, picPath]);
+		this.pic.push([this.picCount, pvMpicType, picPath]);
 		this.picCount += 1;
 		for(var ABC in this.pic){
 			//alert("picCount: " + this.pic[ABC][0] + " \npicPath: " + this.pic[ABC][1]);
@@ -15,12 +15,7 @@ var pvM = {
 	}
 };
 
-
-//#############
-//MQT01
-
-	
-
+var pvMpicType = "unknown"; //important to store what was photographed
 
 function setDisable(Ids) {
 	/*	Ids format: [['fieldset Id',true],['fieldset2 Id',false], ... ]
@@ -32,7 +27,7 @@ function setDisable(Ids) {
 
 //### Take a Picture with Camera ###
 function TakePic(moduleItem) {
-	//moduleItem noch verwursten, was vom Modul wird geknipst
+	pvMpicType = moduleItem;
 	navigator.camera.getPicture(TPonSuccess, TPonFail, { 
 		quality: 100,
     	destinationType: Camera.DestinationType.FILE_URI,
@@ -57,10 +52,20 @@ function TPonFail(message) {
     alert('Failed because: ' + message);
 }
 //### Take a Picture with Camera Ende###
-
+function addPic(picPfad){
+	switch (pvMpicType) {
+		case ("picLabel"):
+			alert("pvMpicType is: " + pvMpicType);
+			break;
+			
+		default:
+			alert("pvMpicType is not known");
+	}
+}
 //### Weitere Bilder ###
 var picIndex = 0;
 function addXtraPic(picPfad) {
+	
 	// Find a <table> element with id="myTable":
 	var table = document.getElementById("table-xtraPics");
 
