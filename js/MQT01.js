@@ -10,7 +10,7 @@ var pvM = {
 		this.pic.push([this.picCount, pvMpicType, picPath]);
 		this.picCount += 1;
 		for(var ABC in this.pic){
-			//alert("picCount: " + this.pic[ABC][0] + " \npicPath: " + this.pic[ABC][1]);
+			alert("picCount: " + this.pic[ABC][0] + " \npvMpcType: " + this.pic[ABC][1] + "\npicPath: " + this.pic[ABC][2]);
 		}
 	}
 };
@@ -41,7 +41,7 @@ function TPonSuccess(imageURI) {
 	
 	pvM.addPicPath(imageURI);
 	addXtraPic(imageURI);
-	window.localStorage.setItem('module', JSON.stringify(module));
+	window.localStorage.setItem('pvM', JSON.stringify(pvM));
 	
 	//Link öffnen
 	//self.location.href="draw.html";
@@ -54,13 +54,18 @@ function TPonFail(message) {
 //### Take a Picture with Camera Ende###
 function addPic(picPfad){
 	switch (pvMpicType) {
-		case ("picLabel"):
-			alert("pvMpicType is: " + pvMpicType);
+		case ("picLabel" || "picFront" || "picBack"):
+			document.getElementById(targetTXT(pvMpicType)).value = picPfad;
+			break;
+		
+		case ("xtraPic"):
+			addXtraPic(picPfad);
 			break;
 			
 		default:
 			alert("pvMpicType is not known");
 	}
+	pvMpicType = "unknown";
 }
 //### Weitere Bilder ###
 var picIndex = 0;
@@ -99,8 +104,11 @@ function delXtraPic(index) {
 
 
 function offlineTP(imageURI){
+	
+	document.getElementById("txtPicLabel").value = "leeren durch offlineTP";
+	pvMpicType = "picLabel";
 	pvM.addPicPath(imageURI);
-	addXtraPic(imageURI);
+	addPic(imageURI);
 }
 
 
@@ -113,25 +121,9 @@ function testFn2() {
 }
 	
 
-
-
-
-
-
-function add(type) {
-        //Create an input type dynamically.   
-        var element = document.createElement("input");
-        //Assign different attributes to the element. 
-        element.setAttribute("type", type);
-        element.setAttribute("value", type);
-        element.setAttribute("name", type);
-        element.setAttribute("onclick", alert("blabla"));
-
-        var foo = document.getElementById("fooBar");
-        //Append the element in page (in span).  
-        foo.appendChild(element);
-
-    }
+function targetTXT(s){
+	return "txt" + s.charAt(0).toUpperCase() + s.slice(1);
+}
 
 
 

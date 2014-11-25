@@ -86,8 +86,24 @@ var currentPage = "content-Index";
 function goTo(page){
 	document.getElementById(currentPage).style.display = 'none';
 	document.getElementById(page).style.display = 'block';
-	//alert(currentPage + " ... " + page);
+	//Write/change Title to navbar
+	var title = page.replace("content-","DaCoMobile ");
+	if (title.match("Index")){
+		document.getElementById("navTitle").innerHTML = "DaCoMobile";
+	} else {
+		document.getElementById("navTitle").innerHTML = title;
+	}
 	currentPage = page;
+	
+	//Test if additional loadings needed
+	switch (page) {
+		case ("content-Draw"):
+			
+			break;
+			
+		default:
+			//nothing
+	}
 }
 
 

@@ -20,7 +20,7 @@ document.addEventListener( "DOMContentLoaded", function(){
 	// setup a new canvas for drawing wait for device init
     setTimeout(function(){
 		
-		drawModule = JSON.parse(window.localStorage.getItem("module"));//lade modulDaten
+		drawModule = JSON.parse(window.localStorage.getItem("pvM"));//lade modulDaten
 		alert(drawModule.serial);
 		document.getElementById("aTool").innerText = tool; //Zeige aktuelles tool
 		document.getElementById("aError").innerText = "Fehler: " + error; //Zeige aktuellen Fehler
