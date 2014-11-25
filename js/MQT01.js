@@ -54,7 +54,7 @@ function addPic(picPfad){
 			document.getElementById(targetTXT(pvMpicType)).value = picPfad;
 			break;
 		
-		case ("xtraPic"):
+		case ("picXtra"):
 			addXtraPic(picPfad);
 			break;
 			
@@ -93,7 +93,54 @@ function delXtraPic(index) {
 		}
     }
 }
+
+function targetTXT(s){
+	return "txt" + s.charAt(0).toUpperCase() + s.slice(1);
+}
 //### Weitere Bilder ENDE ###
+
+
+
+
+//########### Draw functions ################
+var ctx;
+var color = "rgba(0, 166, 214, 0.3)";	
+var tool = "rect"; //mark //pen
+
+
+// function to setup a new canvas for drawing
+function newCanvas(){
+	//define and resize canvas
+    document.getElementById("canvasDiv").style.height = window.innerHeight-90;
+    var canvas = '<canvas id="canvas" width="'+window.innerWidth+'" height="'+(window.innerHeight-90)+'"></canvas>';
+	document.getElementById("canvasDiv").innerHTML = canvas;
+	
+    // setup canvas
+	ctx=document.getElementById("canvas").getContext("2d");
+	
+	ctx.strokeStyle = color;
+	ctx.lineWidth = 3;	
+	
+	//Bild laden
+	TPLoad();
+	
+	/*
+	// setup to trigger drawing on mouse or touch
+    drawTouch();
+    drawPointer();
+	drawMouse();
+	*/
+}
+
+
+function TPLoad(){
+	alert("inside tpload()");
+	var image = new Image(); //Bild laden
+	image.src = pvM.pic[0][2];
+	alert(image.height);
+	var canvas = document.getElementById("canvas");
+	ctx.drawImage (image,0,0,image.width,image.height,0,0,canvas.scrollWidth,canvas.scrollHeight);
+}
 
 
 
@@ -109,17 +156,11 @@ function offlineTP(imageURI){
 
 
 function testFn2() {
-	alert(pvM.serial);
-	
-	window.localStorage.setItem('pvM', JSON.stringify(pvM));
-	//Link öffnen
-	self.location.href="draw.html";
+	goTo('content-MQT01-Draw');
+	newCanvas();
 }
 	
 
-function targetTXT(s){
-	return "txt" + s.charAt(0).toUpperCase() + s.slice(1);
-}
 
 
 

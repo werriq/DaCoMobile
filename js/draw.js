@@ -1,9 +1,7 @@
 //draw.js	
 
 
-var ctx;
-var color = "rgba(0, 166, 214, 0.3)";	
-var tool = "rect"; //mark //pen
+
 
 var xStM, yStM; //xStartModule, yStartModule
 
@@ -33,7 +31,7 @@ document.addEventListener( "DOMContentLoaded", function(){
 
 
 // function to setup a new canvas for drawing
-function newCanvas(){
+function OLD_newCanvas(){
 	//define and resize canvas
     document.getElementById("content").style.height = window.innerHeight-90;
     var canvas = '<canvas id="canvas" width="'+window.innerWidth+'" height="'+(window.innerHeight-90)+'"></canvas>';
@@ -56,7 +54,7 @@ function newCanvas(){
 }
 
 
-function TPLoad(){
+function OLD_TPLoad(){
 	
 	var image = new Image(); //Bild laden
 	image.src = window.localStorage.getItem("picURI");

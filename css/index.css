@@ -44,3 +44,20 @@ td a {
 .panel-center  {
 	text-align: center;
 }
+
+#canvasDiv{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    /*bottom: 46px;*/
+    overflow:hidden;
+    background-color:#ddd;
+}
+
+#canvas{
+    cursor:crosshair ;
+	background-color: Yellow;
+    /*background-color:#fff;  Damit es durchsichtig ist darf kein Background angegeben werden.*/
+}
+

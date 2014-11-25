@@ -161,7 +161,7 @@
 					<!-- Foto Modul Frontseite /input-group -->
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-default" id="picFront">
+						  	<button type="button" class="btn btn-default" id="picFront" onclick="TakePic(this.id)">
 								<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
 								Frontseite
 							</button>
@@ -191,7 +191,7 @@
 					<!-- Foto Modul Rückseite /input-group -->
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-default" id="picBack">
+						  	<button type="button" class="btn btn-default" id="picBack" onclick="TakePic(this.id)">
 								<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
 								Rückseite
 							</button>
@@ -230,7 +230,7 @@
 					</table>
 						
 					<!-- Weiteres Fotos hinzufügen / add  input groups -->
-					<button type="button" class="btn btn-default" onclick="addXtraPic()">
+				  	<button type="button" class="btn btn-default" id="picXtra" onclick="TakePic(this.id)">
 						<span class="glyphicon glyphicon-likeText glyphicon-plus" area-hidden="true"></span>
 						<span class="glyphicon glyphicon-likeText glyphicon-camera" area-hidden="true"></span>
 					</button>
@@ -249,7 +249,20 @@
 			  <button type="button" class="btn btn-default" onclick="testFn2()">testFn2()</button>
 			
 			</div> <!-- Hauptpart / main part ENDE -->
+			
+			
+			
 		</div> <!-- content-MQT01 ENDE -->
+		
+
+		<!-- ##################################################################
+		#######################################################################	-->
+
+		<div id="content-MQT01-Draw" style="display: none;">
+		  <div id="canvasDiv">
+		  	<p style="text-align:center">Loading Canvas...</p>
+		  </div>
+		</div>
 		
 		
 		</div>  <!-- div class="app" ENDE -->
