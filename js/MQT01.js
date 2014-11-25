@@ -4,6 +4,9 @@ var pvM = {
 	Enummer:"E#####-T1",
 	pic: [],
 	picCount: 0,
+	cellCount: 60,
+	stringCoint: 6,
+	ErrorData: [],
 	
 	addPicPath: function (picPath) {
 		//alert("inside" + this.picCount);
@@ -106,7 +109,11 @@ function targetTXT(s){
 var ctx;
 var color = "rgba(0, 166, 214, 0.3)";	
 var tool = "rect"; //mark //pen
+var xStM, yStM; //xStartModule, yStartModule
 
+var stringStep, cellStep;
+// Establish the array which acts as a data source for the list
+var error = "keine Auswahl";
 
 // function to setup a new canvas for drawing
 function newCanvas(){
@@ -124,12 +131,10 @@ function newCanvas(){
 	//Bild laden
 	TPLoad();
 	
-	/*
 	// setup to trigger drawing on mouse or touch
     drawTouch();
     drawPointer();
 	drawMouse();
-	*/
 }
 
 
@@ -141,6 +146,95 @@ function TPLoad(){
 	var canvas = document.getElementById("canvas");
 	ctx.drawImage (image,0,0,image.width,image.height,0,0,canvas.scrollWidth,canvas.scrollHeight);
 }
+
+// prototype to	start drawing on touch using canvas moveTo and lineTo
+var drawTouch = function() {
+	var xStart=0,yStart=0;
+	
+	var start = function(e) {
+		ctx.lineWidth = 3;
+		ctx.beginPath();
+		xStart = e.changedTouches[0].pageX;
+		yStart = e.changedTouches[0].pageY-44;
+		ctx.moveTo(xStart,yStart);
+	};
+	
+	var move = function(e) {
+		e.preventDefault();
+		x = e.changedTouches[0].pageX;
+		y = e.changedTouches[0].pageY-44;
+		
+		if(tool === "pen"){
+			ctx.lineTo(x,y);
+			ctx.stroke();
+		} else if (tool === "rect") {
+			ctx.moveTo(xStart,yStart);
+			ctx.lineTo(xStart,y);
+			ctx.stroke();
+			ctx.moveTo(xStart,yStart);
+			ctx.lineTo(x,yStart);
+			ctx.stroke();
+		} 
+	};
+	
+	var end = function(e) {
+		x = e.changedTouches[0].pageX;
+		y = e.changedTouches[0].pageY-44;
+		if (tool === "rect") {
+			ctx.moveTo(x,y);
+			ctx.lineTo(x,yStart);
+			ctx.stroke();
+			ctx.moveTo(x,y);
+			ctx.lineTo(xStart,y);
+			ctx.stroke();
+			
+			ctx.lineWidth = 1;
+			stringStep = (x-xStart)/pvM.stringCount;
+			for (var i = 0; i<=pvM.stringCount;i++){
+				ctx.moveTo(xStart + (i*stringStep),yStart);
+				ctx.lineTo(xStart + (i*stringStep),y);
+				ctx.stroke();
+			}
+			
+			cellStep = (y-yStart)/(pvM.cellCount/pvM.stringCount);
+			for (var i = 0; i<=(pvM.cellCount/pvM.stringCount);i++){
+				ctx.moveTo(xStart, yStart + (i*cellStep));
+				ctx.lineTo(x, yStart + (i*cellStep));
+				ctx.stroke();
+			}
+			
+			toggleTool();
+			//Werte für Fehlereintrag sichern
+			xStM = xStart;
+			yStM = yStart;
+		} else if(tool === "mark"){
+			markError(x, y);
+		}
+	};
+	
+    document.getElementById("canvas").addEventListener("touchstart", start, false);
+	document.getElementById("canvas").addEventListener("touchmove", move, false);
+	document.getElementById("canvas").addEventListener("touchend", end, false);
+};
+
+function toggleTool(){
+	if (tool === "rect"){
+		tool = "mark";
+	} else if (tool === "mark"){
+		tool = "rect";
+	} else {
+		tool = "mark";
+	}
+	document.getElementById("aTool").innerText = tool; //Aktualisiere Anzeige mit aktuellem tool
+}
+
+
+
+
+
+
+
+
 
 
 
