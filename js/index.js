@@ -13,11 +13,9 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // `load`, `deviceready`, `offline`, and `online`.
     bindEvents: function() {
-		alert("inside bindEvents");
+		
         //document.addEventListener('deviceready', this.onDeviceReady, false);
 		document.addEventListener("deviceready", this.onDeviceReady, true);
-        //document.getElementById('scan').addEventListener('click', this.scan, false);
-        //document.getElementById('encode').addEventListener('click', this.encode, false);
     },
 
     // deviceready Event Handler
@@ -25,17 +23,17 @@ var app = {
     // The scope of `this` is the event. In order to call the `receivedEvent`
     // function, we must explicity call `app.receivedEvent(...);`
     onDeviceReady: function() {
-		alert("inside onDeviceReady");
+		
         app.receivedEvent('deviceready');
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-alert("inside received1");
+
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-alert("inside received3");
+
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
@@ -48,7 +46,7 @@ alert("inside received3");
 
 function scan() {
        
-        alert('scanning');
+        //alert('scanning');
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) { 

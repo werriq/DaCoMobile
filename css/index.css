@@ -50,14 +50,14 @@ td a {
     top: 50px;
     left: 0px;
     right: 0px;
-    /*bottom: 46px;*/
+    bottom: 50px;
     overflow:hidden;
     background-color:#ddd;
 }
 
 #canvas{
     cursor:crosshair ;
-	background-color: Yellow;
+	background-color: YellowGreen;
     /*background-color:#fff;  Damit es durchsichtig ist darf kein Background angegeben werden.*/
 }
 

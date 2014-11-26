@@ -5,7 +5,7 @@ var pvM = {
 	pic: [],
 	picCount: 0,
 	cellCount: 60,
-	stringCoint: 6,
+	stringCount: 6,
 	ErrorData: [],
 	
 	addPicPath: function (picPath) {
@@ -139,12 +139,13 @@ function newCanvas(){
 
 
 function TPLoad(){
-	alert("inside tpload() " + pic.length);
+	alert("inside tpload() \npvM.pic.length: " + pvM.pic.length);
 	var image = new Image(); //Bild laden
-	image.src = pvM.pic[0][2];// noch variable gestalten
+	/*image.src = pvM.pic[0][2];// noch variable gestalten
 	alert(image.height);
 	var canvas = document.getElementById("canvas");
 	ctx.drawImage (image,0,0,image.width,image.height,0,0,canvas.scrollWidth,canvas.scrollHeight);
+	*/
 }
 
 // prototype to	start drawing on touch using canvas moveTo and lineTo
@@ -218,6 +219,7 @@ var drawTouch = function() {
 };
 
 function toggleTool(){
+	alert("inside toggle\ntoll: " + tool);
 	if (tool === "rect"){
 		tool = "mark";
 	} else if (tool === "mark"){
@@ -225,7 +227,8 @@ function toggleTool(){
 	} else {
 		tool = "mark";
 	}
-	document.getElementById("aTool").innerText = tool; //Aktualisiere Anzeige mit aktuellem tool
+	alert("tool nach toogle: " + tool);
+	document.getElementById("aTool").style.display = "none"; //Aktualisiere Anzeige mit aktuellem tool
 }
 
 
