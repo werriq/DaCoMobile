@@ -1,0 +1,63 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.navbar {
+ font-size: 20px;
+}
+
+.navbar-pHeader {
+	color: black;
+}
+
+.glyphicon-likeText {
+	/*Standard glyphicon line-height: 1; aber beim Fließtext habe ich 1.4*/
+	line-height: 1.42857143 !important;
+}
+
+.glyphicon-2x {
+	font-size: 30px;
+}
+
+.glyphicon-3x {
+	font-size: 60px;
+}
+
+/*Tabellenformatierungen*/
+.td-center {
+	text-align: center;
+}
+.td-right {
+	text-align: right;
+}
+
+td a {
+	display:block;
+	color: black;
+}
+
+/*Panelformatierungen*/
+.panel-center  {
+	text-align: center;
+}
+
+#canvasDiv{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    right: 0px;
+    bottom: 50px;
+    overflow:hidden;
+    background-color:#ddd;
+}
+
+#canvas{
+    cursor:crosshair ;
+	background-color: YellowGreen;
+    /*background-color:#fff;  Damit es durchsichtig ist darf kein Background angegeben werden.*/
+}
+

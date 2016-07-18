@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//DE">
+<!DOCTYPE html>
+
+<HTML lang="de">
+  	
+  	<head>
+	  <META charset="utf-8">
+	  <META name="viewport" content="width=device-width, initial-scale=1">
+	  <META name="description" content="">
+	  <META name="author" content="JN MTL">
+
+	  <TITLE>DaCoMobile Mainpage</TITLE>
+
+	  <!-- implement CSS -->
+	  <link rel="stylesheet" type="text/css" href="css/index.css">
+	  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    </head>
+    <body>
+        <div class="app">
+		
+		 
+		  <!-- Menuleiste / Navbar -->
+		  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+			  <!-- Titel und Schalter werden für eine bessere mobile Ansicht zusammengefasst -->
+			  <div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+				  <span class="sr-only">Navigation ein-/ausblenden</span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				  <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" id="navTitle">DaCoMobile</a>
+			  </div>
+
+			  <!-- Alle Navigationslinks, Formulare und anderer Inhalt werden hier zusammengefasst und können dann ein- und ausgeblendet werden -->
+			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				  <li class="active"><a data-toggle="collapse" data-target=".navbar-collapse" onclick="goTo('content-Index')"><span class="glyphicon glyphicon-home"></span></a></li>
+				</ul>
+				<div class="navbar-header navbar-right"> 
+				  <ul class="nav navbar-nav">
+					<li><a data-toggle="collapse" data-target=".navbar-collapse" onclick="goTo('content-Index')"><span class="glyphicon glyphicon-wrench"></span></a></li>
+				  </ul>
+				</div>
+			  </div><!-- /.navbar-collapse -->
+  
+  
+  
+			</div><!-- /.container-fluid -->
+		  </nav> <!-- Menuleiste / Navbar ENDE -->
+
+		  <br>
+		  <div id="content-Index">
+		  <!-- Hauptpart / main part -->
+		  <DIV class="container">
+
+			<div class="table-responsive"> <!-- Tabelle: Testauswahl -->
+			  <table class="table table-bordered table-striped">
+				<colgroup>
+				  <col class="col-xs-2">
+				  <col class="col-xs-10">
+				  <col class="col-xs-1">
+				</colgroup>
+				<thead>
+				  <tr>
+					<th>Nr.</th>
+					<th>Testname</th>
+					<th class="td-center">Hilfe</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td><a onclick="goTo('content-MQT01')" class="text-left">MQT 01</a></td>
+					<td><a onclick="goTo('content-MQT01')" class="text-left">Testnr01</a></td>
+					<td class="td-center"><a href="#"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+				  </tr>
+				  <tr>
+					<td>MQT 02</td>
+					<td>Testnr02</td>
+					<td class="td-center"><a href="#"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+				  </tr>
+				</tbody>
+			  </table>
+			</div> <!-- Tabelle: Testauswahl ENDE -->
+
+			<div id="deviceready" class="blink">
+			  <p class="event listening">Connecting to Device</p>
+			  <p class="event received">Device is Ready</p>
+			</div>
+			
+		  </DIV> <!-- Hauptpart / main part ENDE -->
+			
+		  
+
+		  <!-- TestButton für js --> 
+		  <button type="button" class="btn btn-default" onclick="goTo('content-MQT01')">show MQT01</button>
+		  <button type="button" class="btn btn-default" onclick="scan()">Testbutton2 für js</button>
+		  
+		  
+		  
+		  
+		</div>	<!-- div content-Index ENDE -->
+		
+		<!-- ##################################################################
+		#######################################################################	-->
+		
+		<div id="content-MQT01" style="display: none;">
+			
+					
+			<br>
+			
+			<!-- Hauptpart / main part -->
+			<div class="container-fluid panel-center">
+				
+				<fieldset id="fieldsetPanelHeading">
+					<button type="button" class="btn btn-primary btn-lg" id="barcode-btn" onclick="scan()">
+						<span class="glyphicon glyphicon-barcode glyphicon-2x" area-hidden="true"></span>
+						<span class="glyphicon glyphicon-barcode glyphicon-2x" area-hidden="true"></span>
+						<span class="glyphicon glyphicon-barcode glyphicon-2x" area-hidden="true"></span>
+					</button>
+				</fieldset> <!-- fieldset panel-heading ENDE-->
+					
+				<br>
+
+				<fieldset id="fieldsetPanelBody">
+						
+					<!-- Foto Modul Label /input-group -->
+					<div class="input-group">
+					  <div class="input-group-btn">
+						<button type="button" class="btn btn-default" id="picLabel" onclick="TakePic(this.id)">
+							<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
+							Label
+						</button>
+					  </div>
+					  
+					  <input class="form-control" id="txtPicLabel" type="text" placeholder="Foto Modul Label (nur erste Messung)" disabled>
+					  
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default dropdown-toggle" id="picLabelMenu" data-toggle="dropdown" aria-expanded="false">
+								<span class="glyphicon glyphicon-likeText glyphicon-cog" area-hidden="true"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right" role="menu">
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-pencil" area-hidden="true"></span>
+										Platzhalter bearbeiten
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-remove" area-hidden="true"></span>
+										Platzhalter delete
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div><!-- Foto Modul Label /input-group ENDE-->
+					<br>
+					<!-- Foto Modul Frontseite /input-group -->
+					<div class="input-group">
+						<div class="input-group-btn">
+						  	<button type="button" class="btn btn-default" id="picFront" onclick="TakePic(this.id)">
+								<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
+								Frontseite
+							</button>
+						</div>
+						<input class="form-control" id="txtPicFront" type="text" placeholder="Foto Modul Frontseite" disabled>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default dropdown-toggle" id="picFrontMenu" data-toggle="dropdown" aria-expanded="false">
+								<span class="glyphicon glyphicon-likeText glyphicon-cog" area-hidden="true"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right" role="menu">
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-pencil" area-hidden="true"></span>
+										 Platzhalter bearbeiten
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-remove" area-hidden="true"></span>
+										Platzhalter delete
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div><!-- Foto Modul Frontseite /input-group ENDE-->
+					<br>
+					<!-- Foto Modul Rückseite /input-group -->
+					<div class="input-group">
+						<div class="input-group-btn">
+						  	<button type="button" class="btn btn-default" id="picBack" onclick="TakePic(this.id)">
+								<span class="glyphicon glyphicon-camera" area-hidden="true"></span>
+								Rückseite
+							</button>
+						</div>
+						<input class="form-control" id="txtPicBack" type="text" placeholder="Foto Modul Rückseite" disabled>
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default dropdown-toggle" id="picBackMenu" data-toggle="dropdown" aria-expanded="false">
+								<span class="glyphicon glyphicon-likeText glyphicon-cog" area-hidden="true"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right" role="menu">
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-pencil" area-hidden="true"></span>
+										 Platzhalter bearbeiten
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-remove" area-hidden="true"></span>
+										Platzhalter delete
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div><!-- Foto Modul Rückseite /input-group ENDE-->
+					<br>
+						
+					<!-- Tabelle für weitere Fotos -->
+					<table class="table table-striped" id="table-xtraPics">
+						<colgroup>
+							<col class="col-xs-10">
+							<col class="col-xs-1">
+						</colgroup>
+						<tbody>
+						</tbody>
+					</table>
+						
+					<!-- Weiteres Fotos hinzufügen / add  input groups -->
+				  	<button type="button" class="btn btn-default" id="picXtra" onclick="TakePic(this.id)">
+						<span class="glyphicon glyphicon-likeText glyphicon-plus" area-hidden="true"></span>
+						<span class="glyphicon glyphicon-likeText glyphicon-camera" area-hidden="true"></span>
+					</button>
+						
+					<br>
+					
+				</fieldset> <!-- fieldset panel-body ENDE-->
+			
+				<br>
+					
+			<!-- TestButton für js --> 
+			<button type="button" class="btn btn-default" onclick="setDisable([['fieldsetPanelHeading',true],['fieldsetPanelBody',false]])">Lock top</button>
+			<button type="button" class="btn btn-default" onclick="setDisable([['fieldsetPanelHeading',false],['fieldsetPanelBody',true]])">Lock ground</button>
+			<br>
+			  <button type="button" class="btn btn-default" onclick="offlineTP('file:///D:/DaCoMobile/DaCoMobile-mainDaCoMobile/img/logo.png')">offlineTP()</button>
+			  <button type="button" class="btn btn-default" onclick="testFn2()">testFn2()</button>
+			
+			</div> <!-- Hauptpart / main part ENDE -->
+			
+			
+			
+		</div> <!-- content-MQT01 ENDE -->
+		
+
+		<!-- ##################################################################
+		#######################################################################	-->
+
+		<div id="content-MQT01-Draw" style="display: none;">
+		  <div id="canvasDiv">
+		  	<p style="text-align:center">Loading Canvas...</p>
+		  </div>
+		  
+		  <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+			<div class="container">
+			  <a class="navbar-brand" id="aTool">Rect</a>
+			  <div class="btn-group dropup">
+				<button type="button" class="btn btn-danger">Aktion</button>
+				<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+				  <span class="caret"></span>
+				  <span class="sr-only">Menü ein-/ausblenden</span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+				  <li><a href="#">Aktion</a></li>
+				  <li><a href="#">Andere Aktion</a></li>
+				  <li><a href="#">Irgendwas anderes</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#">Abgetrennter Link</a></li>
+				</ul>
+			  </div>
+			</div>
+		  </nav>
+		</div>
+		
+		
+		</div>  <!-- div class="app" ENDE -->
+		  
+		<!-- /.container --><!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+	  	
+	    <script type="text/javascript" src="js/index.js"></script>
+	    <script type="text/javascript" src="js/MQT01.js"></script>
+	  
+	    <script src="cordova.js"></script>
+	    <script src="barcodescanner.js"></script>
+	  
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="js/hammer.js"></script>
+			<script type="text/javascript">
+            	app.initialize();
+			</script>
+
+    </body>
+</html>
